@@ -9,14 +9,30 @@ import image from '../../assets/image/index'
 import Wrapper from '../Popper/Wrapper'
 import AccountItem from '../AccountItem/AccountItem';
 import Button from '../Button/Button';
+import Menu from '../Popper/Menu/Menu';
 const cx = classNames.bind(styles)
 
+const MENU_ITEM = [
+    {
+        icon: <i className="fa-solid fa-earth-asia"></i>,
+        title: 'English'
+    },
+    {
+        icon: <i className="fa-regular fa-circle-question"></i>,
+        title: 'Feedback and help',
+        to: '/feedback'
+    },
+    {
+        icon: <i className="fa-regular fa-keyboard"></i>,
+        title: 'Keyboard shortcuts'
+    }
+]
 function Header() {
     const [searchResult, setSearchResult] = useState([])
 
     useEffect(()=>{
         setTimeout(() =>{
-            setSearchResult([])
+            setSearchResult([1])
         }, 0)
     },[])
     return (
@@ -57,6 +73,12 @@ function Header() {
                 <div className={cx('action')}>
                         <Button text ><i className="fa-solid fa-plus"></i> Upload</Button>
                         <Button primary >Log in</Button>
+                        
+                <Menu items={MENU_ITEM }>
+                    <button className={cx('more-btn')}>
+                        <i className="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                </Menu>
                 </div>
             </div>
         </header>

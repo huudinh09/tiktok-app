@@ -4,6 +4,8 @@ import styles from './Button.module.scss'
 
 const cx = classNames.bind(styles)
 function Button({
+    rightIcon,
+    leftIcon,
     onClick, 
     href, 
     small = false,
@@ -41,7 +43,9 @@ function Button({
     const classes = cx('wrapper', {[className]: className, primary, outline, large, small, text, disable, rounded, })
     return (
         <Comp className={classes} {...pros}>
-            <span>{children}</span>
+            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+            <span className={cx('title')}>{children}</span>
+            {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     );
 }
