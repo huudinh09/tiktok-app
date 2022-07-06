@@ -8,7 +8,7 @@ import styles from './Header.module.scss'
 import image from '../../assets/image/index'
 import Wrapper from '../Popper/Wrapper'
 import AccountItem from '../AccountItem/AccountItem';
-
+import Button from '../Button/Button';
 const cx = classNames.bind(styles)
 
 function Header() {
@@ -54,7 +54,10 @@ function Header() {
                     </button>
                 </div>  
                 </Tippy>
-                <div className={cx('action')}>asdasdasdasd</div>
+                <div className={cx('action')}>
+                        <Button text ><i className="fa-solid fa-plus"></i> Upload</Button>
+                        <Button primary >Log in</Button>
+                </div>
             </div>
         </header>
     );
