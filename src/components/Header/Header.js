@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Children } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
@@ -15,7 +15,42 @@ const cx = classNames.bind(styles)
 const MENU_ITEM = [
     {
         icon: <i className="fa-solid fa-earth-asia"></i>,
-        title: 'English'
+        title: 'English',
+        children:{
+            title: 'language',
+            data:[
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English (England)'
+                },
+                {
+                    type: 'language',
+                    code: 'vn',
+                    title: 'Tiếng việt (Việt Nam)'
+                },
+                {
+                    type: 'language',
+                    code: 'kor',
+                    title: '한국인 (Korea)'
+                },
+                {
+                    type: 'language',
+                    code: 'jap',
+                    title: '日本 (Japan)'
+                },
+                {
+                    type: 'language',
+                    code: 'chi',
+                    title: '中国人 (China)'
+                },
+                {
+                    type: 'language',
+                    code: 'fra',
+                    title: 'Français (France)'
+                },
+            ]
+        }
     },
     {
         icon: <i className="fa-regular fa-circle-question"></i>,
@@ -32,9 +67,18 @@ function Header() {
 
     useEffect(()=>{
         setTimeout(() =>{
-            setSearchResult([1])
+            setSearchResult([])
         }, 0)
     },[])
+
+    const handleMenuChange = (menuItem) =>{
+        switch (menuItem.type){
+            case 'language': 
+             //handle change language
+                break
+            default:
+        }
+    }
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -74,7 +118,7 @@ function Header() {
                         <Button text ><i className="fa-solid fa-plus"></i> Upload</Button>
                         <Button primary >Log in</Button>
                         
-                <Menu items={MENU_ITEM }>
+                <Menu items={MENU_ITEM } onChange={handleMenuChange}>
                     <button className={cx('more-btn')}>
                         <i className="fa-solid fa-ellipsis-vertical"></i>
                     </button>
