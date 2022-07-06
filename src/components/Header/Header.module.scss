@@ -110,3 +110,29 @@
     margin-left: 16px;
     cursor: pointer;
 }
+
+//user
+
+.action{
+    display: flex;
+    align-items: center;
+}
+.user-avatar{
+    height: 32px;
+    width: 32px;
+    margin-left: 24px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+.action-icon{
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    font-size: 22px;
+    margin-left: 16px;
+    cursor: pointer;
+}
+.plane{
+    transform: rotate(17deg);
+}

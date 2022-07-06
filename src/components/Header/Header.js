@@ -1,6 +1,7 @@
-import { useState, useEffect, Children } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
+import TippyNormal from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import {Link} from 'react-router-dom'
 
@@ -62,9 +63,34 @@ const MENU_ITEM = [
         title: 'Keyboard shortcuts'
     }
 ]
+
+const USER_MENU = [
+    {
+        icon: <i className="fa-regular fa-user"></i>,
+        title: 'View profile',
+        to: '/profile'
+    },
+    {
+        icon: <i className="fa-solid fa-coins"></i>,
+        title: 'Get coins',
+        to: '/coin'
+    },
+    {
+        icon: <i className="fa-solid fa-gear"></i>,
+        title: 'Setting',
+        to: '/setting'
+    },
+    ...MENU_ITEM,
+    {
+        icon: <i className="fa-solid fa-right-from-bracket"></i>,
+        title: 'Log out',
+        separate: true
+    },
+]
 function Header() {
     const [searchResult, setSearchResult] = useState([])
 
+    const curruntUser = true
     useEffect(()=>{
         setTimeout(() =>{
             setSearchResult([])
@@ -114,15 +140,41 @@ function Header() {
                     </button>
                 </div>  
                 </Tippy>
+                
                 <div className={cx('action')}>
+                    {curruntUser ? 
+                    <>
                         <Button text ><i className="fa-solid fa-plus"></i> Upload</Button>
-                        <Button primary >Log in</Button>
+                        <TippyNormal content="Message">
+                            <button className={cx('action-icon', 'plane')}>
+                                <i className="fa-regular fa-paper-plane"></i>
+                            </button>
+                        </TippyNormal>
+                        <TippyNormal content="Inbox">
+                            <button className={cx('action-icon')}>
+                                <i className="fa-regular fa-envelope"></i>
+                            </button>
+                        </TippyNormal>
                         
-                <Menu items={MENU_ITEM } onChange={handleMenuChange}>
-                    <button className={cx('more-btn')}>
-                        <i className="fa-solid fa-ellipsis-vertical"></i>
-                    </button>
-                </Menu>
+                        
+
+                    </>
+                    :
+                    <>
+                        <Button text ><i className="fa-solid fa-plus"></i> Upload</Button>
+                        <Button primary >Log in</Button>     
+                        
+                    </>
+                    }
+                    <Menu items={curruntUser ? USER_MENU : MENU_ITEM } onChange={handleMenuChange}>
+                    {curruntUser ?
+                        <img className={cx('user-avatar')} alt='huudinh09' src={image.userAvatar}/>
+                    :
+                        <button className={cx('more-btn')}>
+                            <i className="fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+                    }
+                    </Menu>
                 </div>
             </div>
         </header>

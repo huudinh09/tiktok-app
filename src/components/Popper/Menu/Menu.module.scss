@@ -1,5 +1,5 @@
 .menu-list{
-    width: 230px;
+    width: 223px;
     .menu-item{
         margin-left: 0 !important;
     }
@@ -40,4 +40,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+.separate{ 
+    border-top: 1px solid rgba(22, 24, 35, 0.12);
+    padding: 10px 16px;
 }

@@ -8,9 +8,9 @@
 	// Example:
 	 "Print to console": {
 	 	"scope": "javascript,typescript",
-		"prefix": "log",
+		"prefix": "log.com",
 	 	"body": [
-	 		"console.log('$1');",
+	 		"console.log($0);",
 	 		"$2"
 		],
 	 	"description": "Log output to console"
@@ -25,22 +25,44 @@
 		],
 		"description": "Code gọi Procedure theo chuẩn"
 	},
-	"HuuDinh's Function": {
+	"HuuDinh's Function Component": {
 		"scope": "javascript,typescript",
 		"prefix": "hdffc",
 		"body": [
 			"import classNames from 'classnames/bind';",
 			"import styles from './$1.module.scss'",
-
+			"",
 			"const cx = classNames.bind(styles)",
 			"function $1() {",
-    				"return (",
-        
-    				");",
+    			"	return (",
+        		"		"
+    			"	);",
 			"}",
 
 			"export default $1;",
 			
+		],
+		"description": "Code gọi Procedure theo chuẩn"
+	},
+	
+	
+	"HuuDinh's State": {
+		"scope": "javascript,typescript",
+		"prefix": "state",
+		"body": [
+			"//import {useState} from 'react"
+			"const [$1,set$1] = useState($0)",
+		],
+		"description": "Code gọi Procedure theo chuẩn"
+	},
+
+	"HuuDinh's Arrow Function": {
+		"scope": "javascript,typescript",
+		"prefix": "af",
+		"body": [
+			"const $1 = () => {",
+    			"	",
+			"}",
 		],
 		"description": "Code gọi Procedure theo chuẩn"
 	},
