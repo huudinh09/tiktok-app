@@ -17,9 +17,12 @@
     display: flex;
 }
 
+.search, .search-result{
+    width: 361px;
+}
+
 .search{
     position: relative;
-    width: 361px;
     height: 46px;
     display: flex;
     align-items: center;
@@ -31,6 +34,14 @@
     &:focus-within{
         border: 1.5px solid rgba(22, 24, 35, 0.12)
     }
+}
+
+.search-lable{
+    padding: 5px 12px;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5);
 }
 
 .search input{
