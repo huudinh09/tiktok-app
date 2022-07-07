@@ -50,7 +50,6 @@
 		"scope": "javascript,typescript",
 		"prefix": "state",
 		"body": [
-			"//import {useState} from 'react"
 			"const [$1,set$1] = useState($0)",
 		],
 		"description": "Code gọi Procedure theo chuẩn"

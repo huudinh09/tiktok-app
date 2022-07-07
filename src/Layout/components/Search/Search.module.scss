@@ -42,6 +42,8 @@
 }
 
 .icon{
+    display: flex;
+    align-items: center;
     position: absolute;
     right: calc(46px + 14px);
     border: none;
@@ -50,6 +52,18 @@
     font-size: 15px;
     padding: 6px;
     cursor: pointer;
+}
+
+.loading{
+    animation: 1s linear 0s infinite normal none running spin;
+}
+@keyframes spin {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }
 
 .split-line{
