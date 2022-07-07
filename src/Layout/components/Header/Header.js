@@ -1,18 +1,15 @@
-import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
 import TippyNormal from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import {Link} from 'react-router-dom'
 
 import styles from './Header.module.scss'
-import image from '../../assets/image/index'
-import Wrapper from '../Popper/Wrapper'
-import AccountItem from '../AccountItem/AccountItem';
-import Button from '../Button/Button';
-import Menu from '../Popper/Menu/Menu';
-import Image from '../Image/Image';
-import { CoinIcon, LanguageIcon, LogoutIcon, SettingIcon } from '../Icon';
+import Search from '../Search/Search'
+import image from '../../../assets/image/index'
+import Button from '../../../components/Button/Button';
+import Menu from '../../../components/Popper/Menu/Menu';
+import Image from '../../../components/Image/Image';
+import { CoinIcon, LanguageIcon, LogoutIcon, SettingIcon } from '../../../components/Icon';
 const cx = classNames.bind(styles)
 
 const MENU_ITEM = [
@@ -90,15 +87,8 @@ const USER_MENU = [
     },
 ]
 function Header() {
-    const [searchResult, setSearchResult] = useState([])
-
     const curruntUser = true
-    useEffect(()=>{
-        setTimeout(() =>{
-            setSearchResult([])
-        }, 0)
-    },[])
-
+    
     const handleMenuChange = (menuItem) =>{
         switch (menuItem.type){
             case 'language': 
@@ -113,36 +103,7 @@ function Header() {
                 <Link to='/' className={cx('logo')}>
                     <img src={image.logo} alt='logo'/>
                 </Link>
-                <Tippy
-                    placement='bottom'
-                    interactive={true}
-                    visible = {searchResult.length > 0}
-                    render={attrs => (
-                        <Wrapper>
-                            <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                                <h4 className={cx('search-lable')}>Accounts</h4>
-                                <AccountItem/>
-                                <AccountItem/>
-                                <AccountItem/>
-                            </div>
-                        </Wrapper>
-                    )}
-                >
-                <div className={cx('search')}>
-                    <input placeholder='Search accounts and videos' spellCheck='false'/>
-                    <button className={cx('clear', 'icon')}>
-                        <i className="fa-solid fa-circle-xmark"></i>
-                    </button>
-                    <button className={cx('loading', 'icon')}>
-                        <i className="fa-solid fa-spinner"></i>
-                    </button>
-                    <span className={cx('split-line')}></span>
-                    <button className={cx('btn-search')}>
-                        <i className="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </div>  
-                </Tippy>
-                
+                <Search/>
                 <div className={cx('action')}>
                     {curruntUser ? 
                     <>

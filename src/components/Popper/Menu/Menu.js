@@ -6,7 +6,7 @@ import 'tippy.js/dist/tippy.css'; // optional
 import styles from './Menu.module.scss'
 import Wrapper from "../Wrapper";
 import MenuItem from "./MenuItem";
-import Header from "./Header";
+import Header from "../../../Layout/components/Header/Header";
 
 const cx = classNames.bind(styles)
 const defaultFn = () => {}
