@@ -11,11 +11,13 @@ import Wrapper from '../Popper/Wrapper'
 import AccountItem from '../AccountItem/AccountItem';
 import Button from '../Button/Button';
 import Menu from '../Popper/Menu/Menu';
+import Image from '../Image/Image';
+import { CoinIcon, LanguageIcon, LogoutIcon, SettingIcon } from '../Icon';
 const cx = classNames.bind(styles)
 
 const MENU_ITEM = [
     {
-        icon: <i className="fa-solid fa-earth-asia"></i>,
+        icon: <LanguageIcon/>,
         title: 'English',
         children:{
             title: 'language',
@@ -71,18 +73,18 @@ const USER_MENU = [
         to: '/profile'
     },
     {
-        icon: <i className="fa-solid fa-coins"></i>,
+        icon: <CoinIcon/>,
         title: 'Get coins',
         to: '/coin'
     },
     {
-        icon: <i className="fa-solid fa-gear"></i>,
+        icon: <SettingIcon/>,
         title: 'Setting',
         to: '/setting'
     },
     ...MENU_ITEM,
     {
-        icon: <i className="fa-solid fa-right-from-bracket"></i>,
+        icon: <LogoutIcon/>,
         title: 'Log out',
         separate: true
     },
@@ -155,20 +157,16 @@ function Header() {
                                 <i className="fa-regular fa-envelope"></i>
                             </button>
                         </TippyNormal>
-                        
-                        
-
                     </>
                     :
                     <>
                         <Button text ><i className="fa-solid fa-plus"></i> Upload</Button>
-                        <Button primary >Log in</Button>     
-                        
+                        <Button primary >Log in</Button>   
                     </>
                     }
                     <Menu items={curruntUser ? USER_MENU : MENU_ITEM } onChange={handleMenuChange}>
                     {curruntUser ?
-                        <img className={cx('user-avatar')} alt='huudinh09' src={image.userAvatar}/>
+                        <Image className={cx('user-avatar')} alt='huudinh09' src={image.userAvatar}/>
                     :
                         <button className={cx('more-btn')}>
                             <i className="fa-solid fa-ellipsis-vertical"></i>
