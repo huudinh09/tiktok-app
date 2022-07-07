@@ -6,20 +6,24 @@ import 'tippy.js/dist/tippy.css'; // optional
 import styles from './Search.module.scss'
 import Wrapper from '../../../components/Popper/Wrapper'
 import AccountItem from '../../../components/AccountItem/AccountItem';
+import useDebounce from '../../../hooks/useDebounce'
 const cx = classNames.bind(styles)
 function Search() {
     const [searchResult, setSearchResult] = useState([])
     const [searchValue,setSearchValue] = useState('')
     const [showResult,setShowResult] = useState(true)
     const [loading,setLoading] = useState(false)
+
     const refInput = useRef()
 
+    const debounce = useDebounce(searchValue, 700)
+
     useEffect(()=>{
-        if(!searchValue.trim()){
+        if(!debounce.trim()){
             return
         }
         setLoading(true)
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
+        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounce)}&type=less`)
             .then(res => res.json())
             .then(res => {
                 setSearchResult(res.data)
@@ -28,14 +32,14 @@ function Search() {
             .catch(()=>{
                 setLoading(false)
             })
-    },[searchValue])
+    },[debounce])
 
     const handleClearSearchValue = () => {
         setSearchValue('')
         setSearchResult([])
         refInput.current.focus();
     }
-    console.log(searchResult);
+
     const handleClickOutSideResult = () => {
         setShowResult(false)
     }
