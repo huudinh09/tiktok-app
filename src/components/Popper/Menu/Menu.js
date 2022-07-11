@@ -6,11 +6,11 @@ import 'tippy.js/dist/tippy.css'; // optional
 import styles from './Menu.module.scss'
 import Wrapper from "../Wrapper";
 import MenuItem from "./MenuItem";
-import Header from "../../../Layout/components/Header/Header";
+import Header from "./Header";
 
 const cx = classNames.bind(styles)
 const defaultFn = () => {}
-function Menu({children, items=[], onChange=defaultFn}) {
+function Menu({children, items=[],hideOnClick = false, onChange=defaultFn}, ...passpros) {
     const [history, setHistory] = useState([{data:items}])
     const current = history[history.length - 1]
     const renderItems = () => {
@@ -37,15 +37,17 @@ function Menu({children, items=[], onChange=defaultFn}) {
 
     return (
         <Tippy
+            // {...passpros}
             placement='bottom-end'
             interactive={true}
+            hideOnClick={hideOnClick}
             delay= {[0,700]}
             offset={[12,8]}
             render={attrs => (
                 <div className={cx('menu-list')} tabIndex="-1" {...attrs}>
                     <Wrapper className={cx('menu-popper')}>
                         {history.length > 1 && <Header onBack={handleBack} title='Language'/>}
-                        {renderItems()}
+                        <div className={cx('menu-body')}> {renderItems()}</div  >
                     </Wrapper>
                 </div>
             )}

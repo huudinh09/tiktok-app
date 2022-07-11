@@ -3,6 +3,7 @@ import TippyNormal from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css'; // optional
 import {Link} from 'react-router-dom'
 
+import routeConfig from '../../../config/routes';
 import styles from './Header.module.scss'
 import Search from '../Search/Search'
 import image from '../../../assets/image/index'
@@ -100,7 +101,7 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <Link to='/' className={cx('logo')}>
+                <Link to={routeConfig.home} className={cx('logo')}>
                     <img src={image.logo} alt='logo'/>
                 </Link>
                 <Search/>

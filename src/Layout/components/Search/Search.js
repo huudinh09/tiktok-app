@@ -40,54 +40,63 @@ function Search() {
         refInput.current.focus();
     }
 
+    const handleChange = (e) => {
+        const searchValue = e.target.value
+        if(!searchValue.startsWith(' ')){
+            setSearchValue(searchValue)
+        }
+    }
+
     const handleClickOutSideResult = () => {
         setShowResult(false)
     }
     return (
-        <Tippy
-            placement='bottom'
-            interactive={true}
-            visible = {searchResult.length > 0 && showResult}
-            render={attrs => (
-                <Wrapper>
-                    <div className={cx('search-result')} tabIndex="-1" {...attrs}>
-                        <h4 className={cx('search-lable')}>Accounts</h4>
-                        {searchResult.map((item, index) => (
-                            <AccountItem data={item} key={index} />
-                        ))}
-                    </div>
-                </Wrapper>
-            )}
-            onClickOutside={handleClickOutSideResult}
-        >
-        <div className={cx('search')}>
-            <input 
-                ref={refInput}
-                value={searchValue}
-                placeholder='Search accounts and videos' 
-                spellCheck='false'
-                onChange={e => setSearchValue(e.target.value)}
-                onFocus={() => setShowResult(true)}
-            />
-            {!!searchValue && !loading ?
-                <button 
-                    className={cx('clear', 'icon')}
-                    onClick={handleClearSearchValue}
-                >
-                    <i className="fa-solid fa-circle-xmark"></i>
-                </button>: ''
-            }
-            {loading && 
-                <button className={cx('loading', 'icon')}>
-                    <i className="fa-solid fa-circle-notch"></i>
+        <div>
+            <Tippy
+                placement='bottom'
+                interactive={true}
+                visible = {searchResult.length > 0 && showResult}
+                render={attrs => (
+                    <Wrapper>
+                        <div className={cx('search-result')} tabIndex="-1" {...attrs}>
+                            <h4 className={cx('search-lable')}>Accounts</h4>
+                            {searchResult.map((item, index) => (
+                                <AccountItem data={item} key={index} />
+                            ))}
+                        </div>
+                    </Wrapper>
+                )}
+                onClickOutside={handleClickOutSideResult}
+            >
+            <div className={cx('search')}>
+                <input 
+                    ref={refInput}
+                    value={searchValue}
+                    placeholder='Search accounts and videos' 
+                    spellCheck='false'
+                    onChange={handleChange}
+                    onFocus={() => setShowResult(true)}
+                />
+                {!!searchValue && !loading ?
+                    <button 
+                        className={cx('clear', 'icon')}
+                        onClick={handleClearSearchValue}
+                    >
+                        <i className="fa-solid fa-circle-xmark"></i>
+                    </button>: ''
+                }
+                {loading && 
+                    <button className={cx('loading', 'icon')}>
+                        <i className="fa-solid fa-circle-notch"></i>
+                    </button>
+                }
+                <span className={cx('split-line')}></span>
+                <button className={cx('btn-search')} onMouseDown={e => e.preventDefault()}>
+                    <i className="fa-solid fa-magnifying-glass"></i>
                 </button>
-            }
-            <span className={cx('split-line')}></span>
-            <button className={cx('btn-search')}>
-                <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>  
-        </Tippy>
+            </div>  
+            </Tippy>
+        </div>
     );
 }
 export default Search;
