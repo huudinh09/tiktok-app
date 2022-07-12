@@ -1,6 +1,7 @@
 .wrapper{
     width: 356px;
-    min-height: 1000px;
+    height: calc(100vh - 60px);
     margin-top: 60px;
     padding: 20px 0px 26px 8px;
+    overflow-y: auto;
 }

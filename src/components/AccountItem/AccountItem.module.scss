@@ -17,7 +17,7 @@
 }
 
 .info{
-    flex: 1;
+    flex-shrink: 1;
     margin-left: 12px;
 }
 
@@ -38,4 +38,48 @@
     color:  #16182380;
     line-height: 1;
     font-weight: 400;
+}
+
+.wrapperSuggested{
+    padding: 10px 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 4px;
+    transition: background 200ms ease-in-out 0s;
+}
+
+.avatarSuggested{
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+}
+
+.lableSuggested{
+    color: rgb(22, 24, 35);
+    font-family: 'SofiaPro' !important;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 15px;
+    margin-top: -2px;
+    max-width: 260px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.nicknameSugessted{
+    color: rgba(22, 24, 35, 0.75);
+    font-family: ProximaNova, Arial, Tahoma, PingFangSC, sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 10px;
+    max-width: 260px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.infoSuggested{
 }

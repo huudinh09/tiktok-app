@@ -1,0 +1,32 @@
+.wrapper{
+    padding: 16px 0;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.75);
+    font-size: 14px;
+    line-height: 20px;
+    position: relative;
+    &::before{
+        content: "";
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        top: 0;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.12);
+        transform: scaleY(0.5);
+    }
+}
+.header-title{
+    padding: 0 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 20px;
+}
+.btn-option{
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 8px 8px;
+    cursor: pointer;
+}
