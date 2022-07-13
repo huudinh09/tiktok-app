@@ -1,0 +1,32 @@
+.wrapper{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    padding-left: 8px;
+    .btn{
+        margin-left:0 !important;
+        margin-right: 8px;
+        margin-bottom: 12px;
+        text-align: left;
+    }
+    &::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        right: 8px;
+        top: -20px;
+        height: 1px;
+        background: rgba(22, 24, 35, 0.12);
+        transform: scaleY(0.5);
+    }
+}
+
+.header-title{
+    flex: 1 1 100%;
+    color: rgba(22, 24, 35, 0.75);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    padding-bottom: 16px;
+}

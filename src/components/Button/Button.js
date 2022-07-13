@@ -18,6 +18,7 @@ function Button({
     to,
     children,
     className,
+    classItem = {},
     ...passPros
 }) {
     let Comp = 'button';
@@ -42,8 +43,8 @@ function Button({
     const classes = cx('wrapper', { [className]: className, primary, outline, large, small, text, disable, rounded });
     return (
         <Comp className={classes} {...pros}>
-            {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
-            <span className={cx('title')}>{children}</span>
+            {leftIcon && <span className={cx('icon', { [classItem.icon]: classItem.icon })}>{leftIcon}</span>}
+            <span className={cx('title', { [classItem.title]: classItem.title })}>{children}</span>
             {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
         </Comp>
     );

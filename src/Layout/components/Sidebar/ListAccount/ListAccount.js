@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 
 import styles from './ListAccount.module.scss';
-import AccountItem from '../../../../components/AccountItem/AccountItem';
+import AccountItem from '@app/components/AccountItem/AccountItem';
 import Popper from '../Popper/Popper';
 
 const cx = classNames.bind(styles);

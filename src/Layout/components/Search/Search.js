@@ -4,10 +4,10 @@ import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 
 import styles from './Search.module.scss';
-import Wrapper from '../../../components/Popper/Wrapper';
-import AccountItem from '../../../components/AccountItem/AccountItem';
-import useDebounce from '../../../hooks/useDebounce';
-import * as searchServices from '../../../apiServices/searchServices';
+import Wrapper from '@app/components/Popper/Wrapper';
+import AccountItem from '@app/components/AccountItem/AccountItem';
+import useDebounce from '@app/hooks/useDebounce';
+import * as searchServices from '@app/apiServices/searchServices';
 
 const cx = classNames.bind(styles);
 function Search() {

@@ -1,14 +1,16 @@
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import { forwardRef } from 'react';
+
 import styles from './AccountItem.module.scss';
+import Image from '../Image/Image';
 
 const cx = classNames.bind(styles);
 
 const AccountItem = forwardRef(({ data, classItem = {} }, ref) => {
     return (
         <Link ref={ref} to={`/@${data.nickname}`} className={cx('wrapper', { [classItem.wrapper]: classItem.wrapper })}>
-            <img
+            <Image
                 className={cx('avatar', { [classItem.avatar]: classItem.avatar })}
                 src={data.avatar}
                 alt={data.nickname}

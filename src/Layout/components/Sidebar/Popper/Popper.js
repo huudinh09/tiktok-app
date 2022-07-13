@@ -1,9 +1,12 @@
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
+import { Link } from 'react-router-dom';
 
 import styles from './Popper.module.scss';
-import Button from '../../../../components/Button/Button';
+import Button from '@app/components/Button/Button';
+import Image from '@app/components/Image/Image';
+
 const cx = classNames.bind(styles);
 function Popper({ children, data }) {
     return (
@@ -15,15 +18,19 @@ function Popper({ children, data }) {
                 interactive={true}
                 render={(attrs) => (
                     <div className={cx('wrapper')}>
-                        <img className={cx('avatar')} src={data.avatar} alt={data.nickname} />
+                        <Link to={`/@${data.nickname}`}>
+                            <Image className={cx('avatar')} src={data.avatar} alt={data.nickname} />
+                        </Link>
                         <Button primary className={cx('btn-follow')}>
                             Follow
                         </Button>
-                        <div className={cx('info')}>
+                        <Link to={`/@${data.nickname}`} className={cx('info')}>
                             <span>{data.full_name}</span>
                             <i className="fa-solid fa-circle-check"></i>
-                        </div>
-                        <p className={cx('nickname')}>{data.nickname}</p>
+                        </Link>
+                        <Link to={`/@${data.nickname}`} className={cx('nickname')}>
+                            {data.nickname}
+                        </Link>
                         <div className={cx('info-folow')}>
                             <div className={cx('num-follow')}>
                                 <span className={cx('num')}>4.1M</span>

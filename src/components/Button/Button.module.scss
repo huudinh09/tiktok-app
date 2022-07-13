@@ -10,6 +10,7 @@
     background-color: var(--white);
     border: 1px solid transparent;
     user-select: none;
+    max-width: 324px;
     + .wrapper{
         margin-left: 14px;
     }
@@ -19,6 +20,8 @@
         opacity: 0.5;
     }
 }
+
+
 .rounded{
     border-radius: 9999px;
     border: 1px solid rgba(22, 24, 35, 0.12);
@@ -70,6 +73,19 @@
 .title{
     font-size: 16px;
     font-weight: 600;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+}
+
+.titleDiscover{
+    margin-left: 2px !important;
+    font-weight: 400;
+    font-size: 14px;
+    color: rgba(22, 24, 35, 0.75);
+
 }
 
 .icon{
@@ -77,6 +93,13 @@
     width: 24px;
     text-align: center;
     font-size: 20px;
+}
+
+.iconDiscover{
+    min-width: 24px;
+    text-align: left;
+    font-size: 14px;
+    color: rgba(22, 24, 35, 1.0);
 }
 
 
