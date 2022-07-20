@@ -50,10 +50,13 @@
 .text{
     border: 1px solid rgba(22, 24, 35, 0.12);
     padding: 8px 13px;
+    color: rgb(22, 24, 35);
     &:hover{
         background-color: rgba(22, 24, 35, 0.03);
     }
 }
+
+
 
 .small{
     font-weight: 600;
@@ -86,6 +89,19 @@
     font-size: 14px;
     color: rgba(22, 24, 35, 0.75);
 
+}
+
+.title-get-app{
+    font-size: 14px;
+    font-weight: 700;
+    color:rgba(22, 24, 35, 0.75);
+    line-height: 22px;
+}
+
+.title-get-app-menu{
+    text-align: left;
+    color: rgba(22, 24, 35, 1.0);
+    font-weight: 700;
 }
 
 .icon{

@@ -1,9 +1,16 @@
+.sidebar-wrapper{
+    width: 356px;
+    height: calc(100vh - 60px);
+    position: relative;
+}
+
 .wrapper{
     width: 356px;
     height: calc(100vh - 60px);
     margin-top: 60px;
     padding: 20px 0px 26px 8px;
     overflow-y: auto;
+    position: fixed;
     
 }
 

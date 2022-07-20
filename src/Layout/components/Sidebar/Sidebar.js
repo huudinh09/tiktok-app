@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+// import { Scrollbars } from 'react-custom-scrollbars-2';
 
 import styles from './Sidebar.module.scss';
 import MenuItem from './Menu/MenuItem';
@@ -19,29 +20,31 @@ const cx = classNames.bind(styles);
 
 function Sidebar() {
     return (
-        <div className={cx('wrapper')}>
-            <Menu>
-                <MenuItem title="For you" to={routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
-                <MenuItem
-                    title="Following"
-                    to={routes.following}
-                    icon={<FollowingIcon />}
-                    activeIcon={<FollowingActiveIcon />}
-                />
-                <MenuItem title="LIVE" to={routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
-            </Menu>
-            <Menu>
-                <ListAccount popperOver={true} headerTitle="Suggested accounts" />
-            </Menu>
-            <Menu>
-                <ListAccount numofFollowingAccount="5" headerTitle="Following accounts" />
-            </Menu>
-            <Menu>
-                <DiscoveryMenu />
-            </Menu>
-            <Menu>
-                <ContactMenu />
-            </Menu>
+        <div className={cx('sidebar-wrapper')}>
+            <div className={cx('wrapper')}>
+                <Menu>
+                    <MenuItem title="For you" to={routes.home} icon={<HomeIcon />} activeIcon={<HomeActiveIcon />} />
+                    <MenuItem
+                        title="Following"
+                        to={routes.following}
+                        icon={<FollowingIcon />}
+                        activeIcon={<FollowingActiveIcon />}
+                    />
+                    <MenuItem title="LIVE" to={routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
+                </Menu>
+                <Menu>
+                    <ListAccount popperOver={true} headerTitle="Suggested accounts" />
+                </Menu>
+                <Menu>
+                    <ListAccount numofFollowingAccount="5" headerTitle="Following accounts" />
+                </Menu>
+                <Menu>
+                    <DiscoveryMenu />
+                </Menu>
+                <Menu>
+                    <ContactMenu />
+                </Menu>
+            </div>
         </div>
     );
 }

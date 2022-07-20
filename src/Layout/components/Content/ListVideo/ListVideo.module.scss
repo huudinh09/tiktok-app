@@ -1,0 +1,79 @@
+.wrapper{
+    display: flex;
+}
+
+.avatar{
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info{
+    margin-left: 12px;
+    width: 510px;
+}
+.account-info{
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    & > i{
+        font-size: 14px;
+        color: #20D5EC;
+    }
+}
+.account-name{
+    font-family: 'SofiaPro';
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.account-nickname{
+    margin-top: 8px;
+    margin-left: 6px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    display: inline-block;
+}
+
+.btn-follow{
+    position: absolute;
+    right: 0;
+    top: 28px;
+}
+
+.video-desc{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.hashtag > p{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(22, 24, 35, 1.0);
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+.video-music{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline;
+    }
+    & > span{
+        margin-left: 4px;
+    } 
+}
