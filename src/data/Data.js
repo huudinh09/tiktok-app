@@ -86,7 +86,7 @@ export const USER_MENU = [
     },
     ...MENU_ITEM,
     {
-        id: 'log-out',
+        action: 'log-out',
         icon: <LogoutIcon />,
         title: 'Log out',
         separate: true,

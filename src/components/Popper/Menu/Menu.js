@@ -26,6 +26,9 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
                         } else {
                             onChange(item);
                         }
+                        if (item.action === 'log-out') {
+                            alert('a');
+                        }
                     }}
                 />
             );

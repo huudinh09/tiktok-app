@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 import styles from './Popper.module.scss';
 import Button from '@app/components/Button/Button';
@@ -9,6 +10,11 @@ import Image from '@app/components/Image/Image';
 
 const cx = classNames.bind(styles);
 function Popper({ children, data }) {
+    const [isFollowed, setIsFollowed] = useState(false);
+
+    const handleFollow = () => {
+        setIsFollowed(!isFollowed);
+    };
     return (
         <div>
             <Tippy
@@ -21,9 +27,15 @@ function Popper({ children, data }) {
                         <Link to={`/@${data.nickname}`}>
                             <Image className={cx('avatar')} src={data.avatar} alt={data.nickname} />
                         </Link>
-                        <Button primary className={cx('btn-follow')}>
-                            Follow
-                        </Button>
+                        {isFollowed ? (
+                            <Button onClick={handleFollow} text className={cx('btn-follow')}>
+                                Following
+                            </Button>
+                        ) : (
+                            <Button onClick={handleFollow} primary className={cx('btn-follow')}>
+                                Follow
+                            </Button>
+                        )}
                         <Link to={`/@${data.nickname}`} className={cx('info')}>
                             <span>{data.full_name}</span>
                             <i className="fa-solid fa-circle-check"></i>

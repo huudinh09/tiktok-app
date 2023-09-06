@@ -1,15 +1,15 @@
 import * as request from '../Utlis/request';
 
-export const search = async (q, type='less') => {
+export const search = async (q, type = 'less') => {
     try {
-        const res = await request.get('users/search',{
+        const res = await request.get('users/search', {
             params: {
                 q,
-                type
-            }
-        })
-        return res.data
+                type,
+            },
+        });
+        return res.data;
     } catch (error) {
-        // console.log(error);
+        console.log(error);
     }
-}
+};

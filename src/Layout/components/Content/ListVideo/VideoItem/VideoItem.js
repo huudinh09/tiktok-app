@@ -7,7 +7,7 @@ import 'tippy.js/dist/tippy.css'; // optional
 import styles from './VideoItem.module.scss';
 import image from '@app/assets/image';
 import videos from '@app/assets/video';
-import { ArrowDownIcon, ArrowIcon, CommentIcon, HeartIcon, ShareIcon } from '@app/components/Icon';
+import { ArrowDownIcon, ArrowIcon, CommentIcon, HeartActiveIcon, HeartIcon, ShareIcon } from '@app/components/Icon';
 import Image from '@app/components/Image/Image';
 import Video from './Video';
 import Button from '@app/components/Button/Button';
@@ -15,8 +15,10 @@ import ButtonAction from '../ButtonAction/ButtonAction';
 import { ACTION_SHARE } from '@app/data/Data';
 
 const cx = classNames.bind(styles);
-function VideoItem({ data }) {
+function VideoItem({ data, id }) {
     const [isFollow, setIsFollow] = useState(true);
+    const [isLiked, setIsLiked] = useState(false);
+    const [likeIconStyle, setLikeIconStyle] = useState({});
     const [dataAction, setDataAction] = useState(ACTION_SHARE.slice(0, 5));
     const [showBtnShowMoreAction, setShowBtnShowMoreAction] = useState(true);
     const [actionListStyle, setActionListStyle] = useState({});
@@ -38,6 +40,11 @@ function VideoItem({ data }) {
         setDataAction(ACTION_SHARE.slice(0, 5));
         setShowBtnShowMoreAction(true);
         setActionListStyle({});
+    };
+
+    const handleLike = () => {
+        setIsLiked(!isLiked);
+        setLikeIconStyle({});
     };
     return (
         <div className={cx('wrapper')}>
@@ -68,10 +75,19 @@ function VideoItem({ data }) {
                     <span>{data.music}</span>
                 </div>
                 <div className={cx('video-wrapper')}>
-                    <Video src={videos[data.videoSrc]} />
+                    <Video id={id} src={videos[data.videoSrc]} />
                     <div className={cx('action-menu')}>
-                        <ButtonAction num={data.like}>
-                            <HeartIcon className={cx('icon')} height="24px" width="24px" />
+                        <ButtonAction onClick={handleLike} num={data.like}>
+                            {isLiked ? (
+                                <HeartActiveIcon
+                                    style={likeIconStyle}
+                                    className={cx('icon', 'heart-icon')}
+                                    height="24px"
+                                    width="24px"
+                                />
+                            ) : (
+                                <HeartIcon className={cx('icon')} height="24px" width="24px" />
+                            )}
                         </ButtonAction>
                         <ButtonAction num={data.coment}>
                             <CommentIcon className={cx('icon')} height="24px" width="24px" />

@@ -16,7 +16,7 @@ function DefaultLayout({ children }) {
     const [styleMenuGetApp, setStyleMenuGetApp] = useState({});
 
     const { y: pageYOffset } = useWindowScroll();
-
+    // console.log(typeof Auth);
     useEffect(() => {
         if (pageYOffset > 10) {
             setStyleBtnScrollTop({});

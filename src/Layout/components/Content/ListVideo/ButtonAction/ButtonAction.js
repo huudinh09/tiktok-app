@@ -3,9 +3,9 @@ import { forwardRef } from 'react';
 import styles from './ButtonAction.module.scss';
 
 const cx = classNames.bind(styles);
-const ButtonAction = forwardRef(({ children, num }, ref) => {
+const ButtonAction = forwardRef(({ children, num, onClick }, ref) => {
     return (
-        <button ref={ref} className={cx('btn-action')}>
+        <button onClick={onClick} ref={ref} className={cx('btn-action')}>
             <span className={cx('action-icon')}>{children}</span>
             <strong className={cx('num-action')}>{num}</strong>
         </button>
