@@ -6,7 +6,7 @@ import { FlagIcon, MuteIcon, PauseIcon, PlayIcon, VolumIcon } from '@app/compone
 // import Image from '@app/components/Image/Image';
 
 const cx = classNames.bind(styles);
-function Video({ src = '' }) {
+function Video({ src = '', id }) {
     const [showBtnPlay, setShowBtnPlay] = useState(false);
     const [showBtnPause, setShowBtnPause] = useState(true);
     const [showBtnMute, setShowBtnMute] = useState(false);
@@ -67,17 +67,15 @@ function Video({ src = '' }) {
     };
 
     const handlePlay = (e) => {
-        const videos = document.querySelectorAll(`.${cx('video')}`);
-        console.log(e.target.parentElement.id);
-        videos[0].play();
+        const videos = document.getElementById(id);
+        videos.play();
         setShowBtnPlay(false);
         setShowBtnPause(true);
     };
 
     const handlePause = () => {
-        const videos = document.querySelectorAll(`.${cx('video')}`);
-        // console.log(videos);
-        videos[0].pause();
+        const videos = document.getElementById(id);
+        videos.pause();
         setShowBtnPause(false);
         setShowBtnPlay(true);
     };
