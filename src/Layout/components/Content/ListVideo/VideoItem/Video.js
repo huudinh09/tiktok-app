@@ -1,42 +1,39 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 import styles from './VideoItem.module.scss';
 import { FlagIcon, MuteIcon, PauseIcon, PlayIcon, VolumIcon } from '@app/components/Icon';
-// import Image from '@app/components/Image/Image';
 
 const cx = classNames.bind(styles);
 function Video({ src = '', id }) {
-    const [showBtnPlay, setShowBtnPlay] = useState(false);
-    const [showBtnPause, setShowBtnPause] = useState(true);
-    const [showBtnMute, setShowBtnMute] = useState(false);
-    const [showBtnVolum, setShowBtnVolum] = useState(true);
+    const [showBtnPlay, setShowBtnPlay] = useState(true);
     const [seekTimeValue, setSeekTimeValue] = useState(0);
     const [styleSelector, setStyleSelector] = useState({});
+    const [styleSelector1, setStyleSelector1] = useState({});
     const [styleProgress, setStyleProgress] = useState({});
+    const [styleProgress1, setStyleProgress1] = useState({});
     const [videoDuration, setVideoDuration] = useState(0);
+    const [seekVolumeValue, setSeekVolumeValue] = useState(0);
 
-    // const [videos, setVideos] = useState(null);
-    // const [btnPlays, setBtnPlays] = useState(null);
+    const videoRef = useRef();
+    const timeLineRef = useRef();
 
-    // useEffect(() => {
-    //     const videos = document.querySelectorAll(`.${cx('video')}`);
-    //     const btnPlays = document.querySelectorAll(`.${cx('btn-pause')}`);
-    //     setVideos(videos);
-    //     setBtnPlays(btnPlays);
-    //     console.log(ref);
-    // }, []);
+    const { ref, inView, entry } = useInView({
+        threshold: 1,
+    });
 
     useEffect(() => {
-        const videos = document.querySelectorAll(`.${cx('video')}`);
-        const id = setTimeout(() => {
-            setSeekTimeValue(videos[0].currentTime);
-            setVideoDuration(videos[0].duration);
-            if (seekTimeValue === videos[0].duration) {
-                clearTimeout(id);
+        if (inView) {
+            handlePlay();
+            console.log(videoDuration);
+        } else {
+            if (videoRef.current.play) {
+                handlePause();
             }
-        }, 1000);
-    });
+        }
+    }, [inView]);
+
     const processNum = (num) => {
         num = num.toString();
         if (num.length === 1) {
@@ -46,6 +43,7 @@ function Video({ src = '', id }) {
         }
         return num;
     };
+
     const processTime = (time) => {
         // console.log('before', time);
         // time = time.toFixed(1);
@@ -66,43 +64,67 @@ function Video({ src = '', id }) {
         return videoDuration;
     };
 
-    const handlePlay = (e) => {
-        const videos = document.getElementById(id);
-        videos.play();
+    const handlePlay = () => {
+        const video = videoRef.current;
+        setVideoDuration(Math.round({ video }.video.duration));
         setShowBtnPlay(false);
-        setShowBtnPause(true);
+        video.play();
     };
 
     const handlePause = () => {
-        const videos = document.getElementById(id);
-        videos.pause();
-        setShowBtnPause(false);
+        const video = videoRef.current;
+        video.pause();
         setShowBtnPlay(true);
     };
     const handleVolum = () => {
-        setShowBtnVolum(false);
-        setShowBtnMute(true);
+        const video = videoRef.current;
+        setSeekVolumeValue(0);
+        video.muted = true;
     };
     const handleMute = () => {
-        setShowBtnMute(false);
-        setShowBtnVolum(true);
+        const video = videoRef.current;
+        video.muted = false;
+        video.volume = 0.5;
+        setSeekVolumeValue(0.5);
+        setStyleSelector1({ left: 0.5 * 100 + '%' });
+        setStyleProgress1({ width: 0.5 * 100 + '%' });
+    };
+
+    const handleChangeVolume = (e) => {
+        videoRef.current.volume = e.target.value;
+        setSeekVolumeValue(e.target.value);
     };
 
     const handleChangeSeekValue = (e) => {
+        videoRef.current.currentTime = e.target.value;
         setSeekTimeValue(e.target.value);
     };
 
     const handleChangeSeekThumb = (e) => {
-        setStyleSelector({ left: e.target.value + '%' });
-        setStyleProgress({ width: e.target.value + '%' });
+        setStyleSelector({ left: (e.target.value * 100) / videoDuration + '%' });
+        setStyleProgress({ width: (e.target.value * 100) / videoDuration + '%' });
+    };
+
+    const handleChangeSeekThumbVolume = (e) => {
+        setStyleSelector1({ left: e.target.value * 100 + '%' });
+        setStyleProgress1({ width: e.target.value * 100 + '%' });
+    };
+
+    const handleOnPlay = () => {
+        const video = videoRef.current;
+        if (video.currentTime < video.duration) {
+            setInterval(() => {
+                setSeekTimeValue((prev) => {
+                    setStyleSelector({ left: (video.currentTime * 100) / videoDuration + '%' });
+                    setStyleProgress({ width: (video.currentTime * 100) / videoDuration + '%' });
+                    return video.currentTime;
+                }, 1000);
+            });
+        }
     };
 
     return (
         <div className={cx('video-card')}>
-            {/* <div className={cx('video-image')}>
-                <Image src="" alt="" />
-            </div> */}
-
             <div className={cx('btn-report')}>
                 <FlagIcon className={cx('flag')} />
                 <span>Report</span>
@@ -110,11 +132,12 @@ function Video({ src = '', id }) {
             <div className={cx('seek-time-wrapper')}>
                 <div className={cx('seek')}>
                     <input
+                        ref={timeLineRef}
                         onInput={handleChangeSeekThumb}
                         className={cx('seek-input')}
                         type="range"
                         min="0"
-                        max="100"
+                        max={videoDuration.toString()}
                         onChange={handleChangeSeekValue}
                         value={seekTimeValue}
                     />
@@ -124,31 +147,58 @@ function Video({ src = '', id }) {
                     <div style={styleProgress} className={cx('seek-progress')}></div>
                 </div>
                 <div className={cx('time-value')}>
-                    {processTime(seekTimeValue)}/{processTime(videoDuration)}
+                    {processTime(Math.round(seekTimeValue))}/{processTime(videoDuration)}
                 </div>
             </div>
             <div className={cx('video-container')}>
-                <video muted={showBtnMute} className={cx('video')} id="video" src={src}></video>
-                {showBtnPlay && (
-                    <div onClick={(e) => handlePlay(e)} className={cx('btn-play')}>
+                <div ref={ref}>
+                    <video
+                        ref={videoRef}
+                        onPlay={handleOnPlay}
+                        className={cx('video')}
+                        id="video"
+                        loop
+                        src={src}
+                        muted={true}
+                    ></video>
+                </div>
+                {showBtnPlay ? (
+                    <div onClick={handlePlay} className={cx('btn-play')}>
                         <PlayIcon />
                     </div>
-                )}
-                {showBtnPause && (
+                ) : (
                     <div onClick={handlePause} className={cx('btn-pause')}>
                         <PauseIcon />
                     </div>
                 )}
-                {showBtnMute && (
+                {seekVolumeValue === 0 ? (
                     <div onClick={handleMute} className={cx('btn-mute')}>
                         <MuteIcon />
                     </div>
-                )}
-                {showBtnVolum && (
+                ) : (
                     <div onClick={handleVolum} className={cx('btn-volum')}>
                         <VolumIcon />
+                        <div className={cx('seek-volume-wrapper')}>
+                            <div className={cx('seek')}>
+                                <input
+                                    onInput={handleChangeSeekThumbVolume}
+                                    className={cx('seek-input')}
+                                    type="range"
+                                    min="0"
+                                    max="1"
+                                    step={0.1}
+                                    onChange={handleChangeVolume}
+                                    value={seekVolumeValue}
+                                />
+                                <div style={styleSelector1} className={cx('selector')}>
+                                    <div className={cx('seek-thumb')}></div>
+                                </div>
+                                <div style={styleProgress1} className={cx('seek-progress')}></div>
+                            </div>
+                        </div>
                     </div>
                 )}
+
                 <div className={cx('btn-report')}>
                     <FlagIcon className={cx('flag')} />
                     <span>Report</span>

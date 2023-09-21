@@ -89,7 +89,7 @@ function ListAccount({ headerTitle, popperOver = false, numofFollowingAccount = 
             updated_at: '2022-05-05 16:15:53',
         },
         {
-            avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/3fda2cca3e9257c62e6fb3b8e9710184~c5_100x100.jpeg?x-expires=1657767600&x-signature=NAalG55ldxtT0GuRMekEEHl%2B0Xk%3D',
+            avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
             bio: '✨ 1998 ✨',
             created_at: '2022-05-05 16:10:05',
             facebook_url: '',
@@ -189,7 +189,7 @@ function ListAccount({ headerTitle, popperOver = false, numofFollowingAccount = 
             updated_at: '2022-05-05 16:15:53',
         },
         {
-            avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/3fda2cca3e9257c62e6fb3b8e9710184~c5_100x100.jpeg?x-expires=1657767600&x-signature=NAalG55ldxtT0GuRMekEEHl%2B0Xk%3D',
+            avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
             bio: '✨ 1998 ✨',
             created_at: '2022-05-05 16:10:05',
             facebook_url: '',
@@ -289,7 +289,7 @@ function ListAccount({ headerTitle, popperOver = false, numofFollowingAccount = 
             updated_at: '2022-05-05 16:15:53',
         },
         {
-            avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/3fda2cca3e9257c62e6fb3b8e9710184~c5_100x100.jpeg?x-expires=1657767600&x-signature=NAalG55ldxtT0GuRMekEEHl%2B0Xk%3D',
+            avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
             bio: '✨ 1998 ✨',
             created_at: '2022-05-05 16:10:05',
             facebook_url: '',
@@ -389,7 +389,7 @@ function ListAccount({ headerTitle, popperOver = false, numofFollowingAccount = 
             updated_at: '2022-05-05 16:15:53',
         },
         {
-            avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/3fda2cca3e9257c62e6fb3b8e9710184~c5_100x100.jpeg?x-expires=1657767600&x-signature=NAalG55ldxtT0GuRMekEEHl%2B0Xk%3D',
+            avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
             bio: '✨ 1998 ✨',
             created_at: '2022-05-05 16:10:05',
             facebook_url: '',
@@ -411,7 +411,7 @@ function ListAccount({ headerTitle, popperOver = false, numofFollowingAccount = 
     ];
     const FollowAccountList = [
         {
-            avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/e86867bdcd0d0fa4649f4731b60677ad~c5_100x100.jpeg?x-expires=1657785600&x-signature=S%2BD9V0dQMASpdyQcDrinZWmDjUw%3D',
+            avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
             bio: '✨ 1998 ✨',
             created_at: '2022-05-05 16:10:05',
             facebook_url: '',
@@ -571,7 +571,7 @@ function ListAccount({ headerTitle, popperOver = false, numofFollowingAccount = 
             updated_at: '2022-05-05 16:15:53',
         },
         {
-            avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/3fda2cca3e9257c62e6fb3b8e9710184~c5_100x100.jpeg?x-expires=1657767600&x-signature=NAalG55ldxtT0GuRMekEEHl%2B0Xk%3D',
+            avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
             bio: '✨ 1998 ✨',
             created_at: '2022-05-05 16:10:05',
             facebook_url: '',
@@ -671,7 +671,7 @@ function ListAccount({ headerTitle, popperOver = false, numofFollowingAccount = 
             updated_at: '2022-05-05 16:15:53',
         },
         {
-            avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/3fda2cca3e9257c62e6fb3b8e9710184~c5_100x100.jpeg?x-expires=1657767600&x-signature=NAalG55ldxtT0GuRMekEEHl%2B0Xk%3D',
+            avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
             bio: '✨ 1998 ✨',
             created_at: '2022-05-05 16:10:05',
             facebook_url: '',
@@ -771,7 +771,7 @@ function ListAccount({ headerTitle, popperOver = false, numofFollowingAccount = 
             updated_at: '2022-05-05 16:15:53',
         },
         {
-            avatar: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/3fda2cca3e9257c62e6fb3b8e9710184~c5_100x100.jpeg?x-expires=1657767600&x-signature=NAalG55ldxtT0GuRMekEEHl%2B0Xk%3D',
+            avatar: 'https://files.fullstack.edu.vn/f8-tiktok/users/2/627394cb56d66.jpg',
             bio: '✨ 1998 ✨',
             created_at: '2022-05-05 16:10:05',
             facebook_url: '',
